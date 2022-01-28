@@ -2,6 +2,9 @@ import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
+//Install Vue via NPM
+import Vue from 'vue'
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB3_ktYCDAvZR8ViEgmkKT8CDMPm1Q53Zo",
@@ -18,14 +21,6 @@ const app = firebase.initializeApp(firebaseConfig);
 
 // Initialize the FirebaseUI Widget using Firebase.
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// Add the email provider ID to the list of FirebaseUI signInOptions
-// ui.start('#firebaseui-auth-container', {
-//   signInOptions: [{
-//     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-//     requireDisplayName: false
-//   }]
-// });
 
 // Specify FirebaseUI config
 const uiConfig = {
@@ -63,3 +58,10 @@ const uiConfig = {
 
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
+
+var appie = new Vue({
+  el: '#app',
+  data: {
+    message: 'You loaded this page on ' + new Date().toLocaleString()
+  }
+})
